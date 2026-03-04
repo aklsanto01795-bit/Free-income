@@ -1,0 +1,397 @@
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<script src="https://pl28629209.effectivegatecpm.com/82/3a/b0/823ab0717e4a68c1d888d2e8ae81b491.js"></script>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Earning App</title>  
+<style>  
+:root {  
+  --primary:#6366f1; --secondary:#4f46e5; --accent:#f59e0b;   
+  --bg:#f3f4f6; --card:#fff; --text:#1f2937;   
+  --success:#10b981; --danger:#ef4444;  
+}  
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}  
+body{background:var(--bg);color:var(--text);padding-bottom:80px;display:flex;flex-direction:column;align-items:center;}  
+.container{width:100%;max-width:500px;padding:20px;}  
+.section{display:none;animation:fadeIn 0.3s ease;}  
+.section.active{display:block;}  
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}  
+.card{background:var(--card);border-radius:15px;padding:20px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);margin-bottom:20px;text-align:center;}  
+.balance-title{font-size:.9rem;color:#6b7280;}  
+.balance-amount{font-size:2.5rem;font-weight:bold;color:var(--primary);}  
+h2{margin-bottom:15px;font-size:1.25rem;}  
+input{width:100%;padding:12px;margin:10px 0;border:1px solid #d1d5db;border-radius:8px;outline:none;}  
+button{width:100%;padding:12px;border:none;border-radius:8px;background:var(--primary);color:white;font-weight:bold;cursor:pointer;transition:transform .2s,background .2s;}  
+button:active{transform:scale(.98);}  
+button:disabled{background:#9ca3af;cursor:not-allowed;}  
+.wheel-container{position:relative;width:250px;height:250px;margin:20px auto;}  
+#wheelCanvas{width:100%;height:100%;}  
+.pointer{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid #333;z-index:10;}  
+.nav-bar{position:fixed;bottom:0;width:100%;max-width:500px;background:#fff;display:flex;justify-content:space-around;padding:15px 0;box-shadow:0 -2px 10px rgba(0,0,0,.1);}  
+.nav-item{text-align:center;font-size:.7rem;color:#6b7280;cursor:pointer;flex:1;}  
+.nav-item.active{color:var(--primary);font-weight:bold;}  
+.nav-item i{display:block;font-size:1.2rem;margin-bottom:4px;}  
+.payment-info{background:#fef3c7;padding:10px;border-radius:8px;margin-bottom:15px;font-size:.9rem;border-left:4px solid var(--accent);}  
+.plan-card{background:#fff;padding:15px;margin-bottom:15px;border-radius:12px;box-shadow:0 3px 5px rgba(0,0,0,0.1);}  
+.plan-card h3{margin-bottom:5px;}  
+.plan-card p{margin-bottom:5px;font-size:.9rem;color:#374151;}  
+#spin-ad,#packages-ad{margin-top:10px;text-align:center;}  
+</style>  
+</head>  
+  <meta name="monetag" content="38885dc265c13fa3e4ae39fd6bd2dc20">  
+  <script>
+  // ===== ১. USER DATA =====
+  let userData = { ... };
+
+  // ===== ২. PACKAGES =====
+  const packages = [ ... ];
+
+  // ===== ৩. DAILY INCOME =====
+  function updateDailyIncome() { ... }
+
+  // ===== ৪. SPIN FUNCTION =====
+  function handleSpin() { ... }
+
+  // ===== ৫. BUY PACKAGE =====
+  function buyPackage(index) { ... }
+
+  // ===== ৬. AUTO DAILY INCOME CHECK =====
+  setInterval(updateDailyIncome, 1000*60*60);
+  </script>
+<body>  
+  <script src="https://pl28629211.effectivegatecpm.com/53/a2/ae/53a2ae87b5c00096c8d8f273b436ea3c.js"></script>  <div class="container">  
+  <!-- AUTH -->  
+<section id="auth" class="section active">  
+  <div class="card">  
+    <h2 id="auth-title">Signup</h2>  <input type="number" id="auth-phone" placeholder="Mobile Number">  
+<input type="password" id="auth-pass" placeholder="Password">  
+
+<button onclick="handleAuth()">Signup</button>  
+
+<p style="margin-top:10px;font-size:14px;">  
+  <span style="color:#6366f1;cursor:pointer;" onclick="toggleAuth()">  
+    Already have an account? Login  
+  </span>  
+</p>
+
+  </div>  
+  </section>  
+  <!-- HOME -->  
+  <section id="home" class="section">  
+    <div class="card"><p class="balance-title">Current Balance</p>  
+      <p class="balance-amount">৳ <span id="user-balance">0.00</span></p>  
+    </div>  
+    <div class="card">  
+      <h2>Welcome Back!</h2>  
+      <p>Start earning by spinning the wheel or buying packages.</p><br>  
+      <button onclick="showSection('spin')">Go to Spin</button>  
+      <button onclick="showSection('packages')">Go to Packages</button>  
+    </div>  
+  </section>    <!-- SPIN -->    <section id="spin" class="section">  
+    <div class="card">  
+      <h2>Lucky Spin</h2>  
+      <p id="spin-msg">Cost: 100 Taka per spin</p>  
+      <div class="wheel-container">  
+        <canvas id="wheelCanvas" width="250" height="250"></canvas>  
+        <div class="pointer"></div>  
+      </div>  
+      <button id="spin-btn" onclick="handleSpin()">SPIN NOW</button>  
+      <div id="spin-ad"></div>  
+    </div>  
+  </section>    <!-- PACKAGES -->    <section id="packages" class="section">  
+    <div class="card">  
+      <h2>Available Packages</h2>  
+      <div id="packages-list"></div>  
+      <div id="packages-ad"></div>  
+    </div>  
+  </section>    <!-- DEPOSIT -->    <section id="deposit" class="section">  
+    <div class="card">  
+      <h2>Deposit Money</h2>  
+      <div class="payment-info">  
+        <p><strong>bKash:</strong> 01836417568</p>  
+        <p><strong>Nagad:</strong> 01897153663</p>  
+        <p style="margin-top:5px"><em>Instruction: Send money to the number above and provide details below.</em></p>  
+      </div>  
+      <input type="number" id="dep-num" placeholder="Your Number">  
+      <input type="text" id="dep-trx" placeholder="Transaction ID">  
+      <button onclick="handleDeposit()">Submit Deposit</button>  
+    </div>  
+  </section>    <!-- WITHDRAW -->    <section id="withdraw" class="section">  
+    <div class="card">  
+      <h2>Withdraw Money</h2>  
+      <input type="number" id="wd-amount" placeholder="Amount (Min 500)">  
+      <input type="number" id="wd-num" placeholder="Payment Number">  
+      <button onclick="handleWithdraw()">Request Withdraw</button>  
+    </div>  
+  </section>    <!-- PROFILE -->    <section id="profile" class="section">  
+    <div class="card">  
+      <div style="font-size:50px;">👤</div>  
+      <h2 id="prof-name">User</h2>  
+      <hr style="margin:15px 0;border:.5px solid #eee;">  
+      <div style="text-align:left;line-height:2;">  
+        <p><strong>Balance:</strong> ৳ <span id="prof-balance">0.00</span></p>  
+        <p><strong>Total Deposit:</strong> ৳ <span id="prof-dep">0.00</span></p>  
+        <p><strong>Total Withdraw:</strong> ৳ <span id="prof-wd">0.00</span></p>  
+      </div><br>  
+      <button style="background:var(--danger);" onclick="alert('Demo Logout')">Logout</button>  
+    </div>  
+  </section>  
+</div>  <!-- NAV -->  <nav class="nav-bar">  
+  <div class="nav-item active" onclick="showSection('home', this)"><i>🏠</i>Home</div>  
+  <div class="nav-item" onclick="showSection('spin', this)"><i>🎡</i>Spin</div>  
+  <div class="nav-item" onclick="showSection('packages', this)"><i>📦</i>Packages</div>  
+  <div class="nav-item" onclick="showSection('deposit', this)"><i>💰</i>Deposit</div>  
+  <div class="nav-item" onclick="showSection('withdraw', this)"><i>💸</i>Withdraw</div>  
+  <div class="nav-item" onclick="showSection('profile', this)"><i>👤</i>Profile</div>  
+</nav>  <script src="https://alwingulla.com/88/tag.min.js" data-zone="10549783" async></script>  <script>  
+/* ===== USER DATA ===== */  
+let userData={  
+  balance:50,  
+  totalDeposit:0,  
+  totalWithdraw:0,  
+  isSpinning:false,  
+  activePackage:null,  
+  packageEndTime:null,  
+  dailySpinCount:0,  
+  lastSpinDay:null,  
+  lastIncomeDay:null  
+};  
+  
+/* ===== PACKAGES ===== */  
+const packages = [  
+  {name:"Starter", price:200, dailyIncome:50, time:7},       // ৭ দিন  
+  {name:"Silver", price:300, dailyIncome:80, time:30},       // ১ মাস  
+  {name:"Gold", price:500, dailyIncome:150, time:30},  
+  {name:"Platinum", price:800, dailyIncome:220, time:30},  
+  {name:"Diamond", price:1000, dailyIncome:300, time:30},  
+  {name:"Master", price:1500, dailyIncome:400, time:30},  
+  {name:"Pro", price:2000, dailyIncome:650, time:30},  
+  {name:"Ultra", price:5000, dailyIncome:1500, time:30},  
+  {name:"Mega", price:10000, dailyIncome:3000, time:30},  
+  {name:"UltraMega", price:20000, dailyIncome:7000, time:30}  
+];  
+  
+/* ===== SHOW SECTION ===== */  
+function showSection(id,el){  
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));  
+  document.getElementById(id).classList.add('active');  
+  if(el){document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));el.classList.add('active');}  
+}  
+  
+/* ===== UPDATE UI ===== */  
+function updateUI(){  
+  document.getElementById('user-balance').innerText=userData.balance.toFixed(2);  
+  document.getElementById('prof-balance').innerText=userData.balance.toFixed(2);  
+  document.getElementById('prof-dep').innerText=userData.totalDeposit.toFixed(2);  
+  document.getElementById('prof-wd').innerText=userData.totalWithdraw.toFixed(2);  
+  const btn=document.getElementById('spin-btn');  
+  const msg=document.getElementById('spin-msg');  
+  let today=new Date().toDateString();  
+  if(userData.lastSpinDay!==today){userData.dailySpinCount=0;userData.lastSpinDay=today;}  
+  if(!userData.activePackage){btn.disabled=true;btn.innerText="Buy a Package";msg.innerText="No active package";}  
+  else if(userData.dailySpinCount>=userData.activePackage.daily){btn.disabled=true;btn.innerText="Daily Limit Reached";msg.innerText="You reached daily spins";}  
+  else{btn.disabled=false;btn.innerText="SPIN NOW";msg.innerText=`Cost: 100 Taka per spin | Package: ${userData.activePackage.name}`;}  
+}  
+  function updateDailyIncome(){  
+  let today = new Date().toDateString();  
+  if(userData.lastIncomeDay !== today){  
+    if(userData.activePackage){  
+      userData.balance += userData.activePackage.dailyIncome;  
+      userData.lastIncomeDay = today;  
+      updateUI();  
+      console.log(`Daily income ৳${userData.activePackage.dailyIncome} added`);  
+    }  
+  }  
+}  
+  
+/* ===== RENDER PACKAGES ===== */  
+function renderPackages(){  
+  const list=document.getElementById('packages-list');  
+  list.innerHTML="";  
+  packages.forEach((p,i)=>{  
+    const div=document.createElement('div');  
+    div.className="plan-card";  
+    div.innerHTML=`<h3>${p.name}</h3>  
+              <p>Duration: ${p.time} Day | Daily Income: ৳${p.dailyIncome}</p>  
+              <p>Price: ৳${p.price}</p>  
+              <button onclick="buyPackage(${i})">Buy Now</button>`;  
+    list.appendChild(div);  
+  });  
+}  
+  
+/* ===== BUY PACKAGE ===== */  
+function buyPackage(index){  
+  const pkg=packages[index];  
+  if(userData.balance<pkg.price){alert("Insufficient balance! Deposit first."); showSection('deposit'); return;}  
+  userData.balance-=pkg.price;  
+  userData.activePackage={...pkg};  
+  const now=new Date();  
+  userData.packageEndTime=new Date(now.getTime() + pkg.time*24*60*60*1000);  
+  userData.dailySpinCount=0;  
+  updateUI();  
+  alert(`Package ${pkg.name} activated for ${pkg.time} days`);  
+  showPackageAd(); // package ad  
+}  
+  
+/* ===== WHEEL ===== */  
+const wheel=document.getElementById('wheelCanvas');  
+const ctx=wheel.getContext('2d');  
+const segments=[{color:'#ef4444',label:'৳20'},{color:'#3b82f6',label:'৳50'},{color:'#10b981',label:'৳150'},{color:'#f59e0b',label:'৳200'},{color:'#8b5cf6',label:'৳0'},{color:'#ec4899',label:'৳500'}];  
+const segAngle=360/segments.length;  
+let wheelRotation=0;  
+function drawWheel(){  
+  const center=wheel.width/2;  
+  segments.forEach((s,i)=>{  
+    ctx.beginPath();  
+    ctx.moveTo(center,center);  
+    ctx.fillStyle=s.color;  
+    ctx.arc(center,center,center,(i*segAngle)*Math.PI/180,((i+1)*segAngle)*Math.PI/180);  
+    ctx.lineTo(center,center);  
+    ctx.fill();  
+    ctx.save();  
+    ctx.translate(center,center);  
+    ctx.rotate((i+0.5)*segAngle*Math.PI/180);  
+    ctx.textAlign='right';  
+    ctx.fillStyle='#fff';  
+    ctx.font='bold 14px sans-serif';  
+    ctx.fillText(s.label,center-10,0);  
+    ctx.restore();  
+  });  
+}  
+drawWheel();  
+  
+/* ===== ADS ===== */  
+function showSpinAd(){  
+  const adDiv=document.getElementById('spin-ad');  
+  adDiv.innerHTML="";  
+  const script=document.createElement('script');  
+  script.src='//libtl.com/sdk.js';  
+  script.setAttribute('data-zone','10549783');  
+  script.setAttribute('data-sdk','show_10549783');  
+  adDiv.appendChild(script);  
+}  
+function showPackageAd(){  
+  const adDiv=document.getElementById('packages-ad');  
+  adDiv.innerHTML="";  
+  const script=document.createElement('script');  
+  script.src='//libtl.com/sdk.js';  
+  script.setAttribute('data-zone','10549783');  
+  script.setAttribute('data-sdk','show_10549783');  
+  adDiv.appendChild(script);  
+}  
+  
+/* ===== SPIN ===== */  
+function handleSpin(){  
+  if(userData.isSpinning) return;  
+  const now=new Date();  
+  if(!userData.activePackage || now>userData.packageEndTime){alert("Package expired or not bought!"); return;}  
+  if(userData.dailySpinCount>=userData.activePackage.daily){alert("Daily spin limit reached!"); return;}  
+  userData.isSpinning=true;  
+  userData.balance-=100; updateUI();  
+  showSpinAd();  
+  const spins=Math.floor(Math.random()*360)+1800;  
+  wheelRotation+=spins;  
+  wheel.style.transition='transform 4s cubic-bezier(0.15,0,0.15,1)';  
+  wheel.style.transform=`rotate(${wheelRotation}deg)`;  
+  setTimeout(()=>{  
+    userData.isSpinning=false;  
+    const normalized=(wheelRotation%360);  
+    const index=Math.floor(normalized/segAngle);  
+    const winAmount=parseInt(segments[segments.length-1-index].label.replace(/[^\d]/g,''));  
+    if(winAmount>0){alert('Congrats! You won ৳'+winAmount);}else{alert('Better luck next time!');}  
+    userData.balance+=winAmount; userData.dailySpinCount++; updateUI();  
+  },4000);  
+}  
+  
+/* ===== DEPOSIT ===== */  
+function handleDeposit(){  
+  const num=document.getElementById('dep-num').value;  
+  const trx=document.getElementById('dep-trx').value;  
+  if(!num||!trx){alert("Fill all fields");return;}  
+  alert("Deposit submitted! Will be verified (Demo).");  
+  document.getElementById('dep-num').value=''; document.getElementById('dep-trx').value=''; updateUI();  
+}  
+  
+/* ===== WITHDRAW ===== */  
+function handleWithdraw(){  
+  const amt=parseFloat(document.getElementById('wd-amount').value);  
+  const num=document.getElementById('wd-num').value;  
+  if(!amt||!num){alert("Fill all fields");return;}  
+  if(amt>userData.balance){alert("Insufficient balance");return;}  
+  if(amt<500){alert("Min withdraw 500");return;}  
+  alert("Withdraw request sent! (Demo)");  
+  userData.balance-=amt; userData.totalWithdraw+=amt;  
+  document.getElementById('wd-amount').value='';document.getElementById('wd-num').value='';  
+  updateUI();  
+}  
+  
+/* ===== HOME AUTO POPUP ===== */  
+window.addEventListener('load', () => {  
+    setTimeout(() => {   
+        if(typeof show_10549783 === "function"){  
+            show_10549783('pop')  
+              .then(() => { console.log("Home ad finished"); })  
+              .catch(e => { console.log("Home ad error:", e); });  
+        }  
+    }, 3000); // 3 সেকেন্ড delay  
+});  
+  
+/* ===== INITIALIZE ===== */  
+renderPackages();  
+updateUI();  
+</script>    <script>  
+let isSignup = true;  
+  
+/* AUTO LOGIN CHECK */  
+window.addEventListener("load",()=>{  
+  if(localStorage.getItem("loggedUser")){  
+    showSection("home");  
+  }  
+});  
+  
+/* TOGGLE SIGNUP / LOGIN */  
+function toggleAuth(){  
+  isSignup = !isSignup;  
+  document.getElementById("auth-title").innerText = isSignup ? "Signup" : "Login";  
+  document.querySelector("#auth button").innerText = isSignup ? "Signup" : "Login";  
+  document.querySelector("#auth span").innerText =  
+    isSignup ? "Already have an account? Login" : "Don't have an account? Signup";  
+}  
+  
+/* SIGNUP & LOGIN */  
+function handleAuth(){  
+  const phone = document.getElementById("auth-phone").value;  
+  const pass = document.getElementById("auth-pass").value;  
+  
+  if(!phone || !pass){  
+    alert("Mobile number and password required");  
+    return;  
+  }  
+  
+  let users = JSON.parse(localStorage.getItem("users") || "{}");  
+  
+  if(isSignup){  
+    if(users[phone]){  
+      alert("Account already exists");  
+      return;  
+    }  
+    users[phone] = {  
+      pass: pass,  
+      data: userData  
+    };  
+    localStorage.setItem("users", JSON.stringify(users));  
+    alert("Signup successful! Now login");  
+    toggleAuth();  
+  }else{  
+    if(!users[phone] || users[phone].pass !== pass){  
+      alert("Wrong login details");  
+      return;  
+    }  
+    userData = users[phone].data;  
+    localStorage.setItem("loggedUser", phone);  
+    showSection("home");  
+    updateUI();  
+  }  
+}  
+  </script>  </body>  
+</html>
